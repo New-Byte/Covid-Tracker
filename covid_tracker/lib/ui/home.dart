@@ -8,19 +8,49 @@ country() {
   print("List of countries to select from...");
 }
 
+Widget display(label, num, code) {
+  return Container(
+    padding: EdgeInsets.all(20),
+    margin: EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Colors.black87,
+      borderRadius: BorderRadius.circular(20),
+    ),
+    width: 500,
+    height: 140,
+    child: Column(
+      children: <Widget>[
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.white38,
+            fontSize: 20,
+          ),
+        ),
+        Text("   "),
+        Text(
+          num,
+          style: TextStyle(
+            color: Colors.accents[code],
+            fontSize: 35,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 tracker() {
   var active_cases = "124567";
   var total_deaths = "500";
   var total_recovered = "2541";
   var c_name = "India";
   var body = Container(
-    width: double.infinity,
-    height: double.infinity,
-    color: Colors.grey,
-    child: Row(
+    child: Stack(
       children: <Widget>[
         Container(
-          width: 500,
+          width: double.infinity,
+          height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
@@ -31,94 +61,10 @@ tracker() {
           ),
         ),
         Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: 500,
-              height: 140,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Active Cases",
-                    style: TextStyle(
-                      color: Colors.white38,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text("   "),
-                  Text(
-                    active_cases,
-                    style: TextStyle(
-                      color: Colors.lightBlue,
-                      fontSize: 35,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: 500,
-              height: 140,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Total Deaths",
-                    style: TextStyle(
-                      color: Colors.white38,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text("   "),
-                  Text(
-                    total_deaths,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 35,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: 500,
-              height: 140,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Total Recovered",
-                    style: TextStyle(
-                      color: Colors.white38,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text("   "),
-                  Text(
-                    total_recovered,
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 35,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          children: [
+            display("Active Cases", active_cases, 6),
+            display("Total Deaths", total_deaths, 0),
+            display("Total Recovered", total_recovered, 9),
           ],
         ),
       ],
